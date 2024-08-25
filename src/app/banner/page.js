@@ -3,7 +3,6 @@ import PopularEbooks from '@/components/PopularEbooks'
 import PopularHardBook from '@/components/PopularHardBook'
 import TrendingEbooks from '@/components/TrendingEbooks'
 import TrendingHardBook from '@/components/TrendingHardBook'
-import { Skeleton } from '@/components/ui/skeleton'
 
 export const metadata = {
     title: 'Banner',

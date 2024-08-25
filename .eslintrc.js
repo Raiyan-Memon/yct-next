@@ -34,6 +34,8 @@ module.exports = {
         'no-nested-ternary': 0,
         'no-underscore-dangle': 0,
         'no-unused-expressions': ['error', { allowTernary: true }],
+        'react/no-unescaped-entities': 'off',
+        '@next/next/no-page-custom-font': 'off',
         camelcase: 0,
         'react/self-closing-comp': 1,
         'react/jsx-filename-extension': [1, { extensions: ['.js', 'jsx'] }],
@@ -46,6 +48,7 @@ module.exports = {
         'react/require-default-props': 0,
         'react/react-in-jsx-scope': 0,
         'linebreak-style': ['error', 'unix'],
+        'linebreak-style': ['error', 'windows'],
         semi: ['error', 'never'],
     },
 }

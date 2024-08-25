@@ -5,7 +5,6 @@ import axios from '@/lib/axios'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 import 'swiper/css/free-mode'
-import Image from 'next/image'
 import PdfImage from './PdfImage'
 import { FreeMode, Navigation } from 'swiper/modules'
 import 'swiper/css/navigation'
@@ -20,9 +19,6 @@ export default function TrendingHardBook() {
             .then(response => {
                 setEbook(response.data.data)
                 setLoading(false)
-            })
-            .catch(error => {
-                console.log(error)
             })
     }
 

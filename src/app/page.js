@@ -1,6 +1,5 @@
 import LoginLinks from '@/app/LoginLinks'
 import BannerComponent from '@/components/BannerComponent'
-import { Suspense } from 'react'
 
 export const metadata = {
     title: 'Laravel - Home',

@@ -9,7 +9,6 @@ import 'swiper/css/free-mode'
 import 'swiper/css/pagination'
 
 // import required modules
-import { FreeMode, Pagination } from 'swiper/modules'
 import { Skeleton } from './ui/skeleton'
 
 const shimmer = (w, h) => `
@@ -41,9 +40,6 @@ export default function BannerComponent() {
             .then(response => {
                 setBanner(response.data.data)
                 setLoading(false)
-            })
-            .catch(error => {
-                console.log(error)
             })
     }
 
