@@ -49,6 +49,9 @@ module.exports = {
         'react/react-in-jsx-scope': 0,
         'linebreak-style': ['error', 'unix'],
         'linebreak-style': ['error', 'windows'],
+        'linebreak-style': 0,
         semi: ['error', 'never'],
+        'eslint linebreak-style': [0, 'error', 'windows'],
+        'eslint linebreak-style': [0, 'error', 'unix'],
     },
 }
