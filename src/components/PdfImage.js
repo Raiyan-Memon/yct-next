@@ -29,8 +29,8 @@ export default function PdfImage(props) {
                     loading="lazy"
                     placeholder={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
                     // fill
-                    width={500}
-                    height={500}
+                    width={250}
+                    height={250}
                     src={props.image}
                     onLoadingComplete={image =>
                         image.classList.remove('opacity-50')
