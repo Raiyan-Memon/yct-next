@@ -47,8 +47,6 @@ export default function ChessComponent() {
     function pieceClick(piece, square) {
         const colour = 'rgba(0, 0, 255, 0.4)'
 
-    
-
         setMoveFrom(square)
         setRightClickedSquares({
             rightClickedSquares,
@@ -62,11 +60,23 @@ export default function ChessComponent() {
         })
 
         const valid = game.moves({ square })
+     
 
         let newSquareColor = {}
 
         valid.forEach(element => {
-            newSquareColor[element] = {
+            // console.log(element)
+
+            const squarelength = element.length
+
+            const withoutPieceSquare =
+                element[squarelength - 1] == '+'
+                    ? element[squarelength - 3] + element[squarelength - 2]
+                    : element[squarelength - 2] + element[squarelength - 1]
+
+            // console.log(withoutPieceSquare)
+
+            newSquareColor[withoutPieceSquare] = {
                 backgroundColor: colour,
             }
         })
