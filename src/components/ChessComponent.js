@@ -3,12 +3,14 @@
 import { Chessboard } from 'react-chessboard'
 import { useEffect, useState } from 'react'
 import { Chess } from 'chess.js'
+import '../app/style.css'
 
 export default function ChessComponent() {
     const [game, setGame] = useState(new Chess())
     // const [validMoves, setValidMoves] = useState([])
     // const [selectedPiece, setSelectedPiece] = useState('')
     const [moveFrom, setMoveFrom] = useState('')
+    const [check, setCheck] = useState(false)
     // const [moveTo, setMoveTo] = useState('')
     const [turn, setTurn] = useState('')
     const [rightClickedSquares, setRightClickedSquares] = useState({})
@@ -31,15 +33,31 @@ export default function ChessComponent() {
                 to: target,
                 promotion: 'q',
             })
-            setMoveFrom('')
             setRightClickedSquares({})
+            const colour = 'red'
+
+            const newSquareColor = {}
+            newSquareColor[move.from] = {
+                backgroundColor: colour,
+            }
+            newSquareColor[move.to] = {
+                backgroundColor: colour,
+            }
+
+            setRightClickedSquares({
+                rightClickedSquares,
+                ...newSquareColor,
+            })
+
+            setMoveFrom('')
             if (move === null) return
         } catch (error) {
-            // setRightClickedSquares({})
             setGame(newGame)
         }
         if (newGame.isCheck()) {
-            alert('check')
+            setCheck(true)
+        } else {
+            setCheck(false)
         }
         setGame(newGame)
     }
@@ -60,21 +78,16 @@ export default function ChessComponent() {
         })
 
         const valid = game.moves({ square })
-     
 
         let newSquareColor = {}
 
         valid.forEach(element => {
-            // console.log(element)
-
             const squarelength = element.length
 
             const withoutPieceSquare =
                 element[squarelength - 1] == '+'
                     ? element[squarelength - 3] + element[squarelength - 2]
                     : element[squarelength - 2] + element[squarelength - 1]
-
-            // console.log(withoutPieceSquare)
 
             newSquareColor[withoutPieceSquare] = {
                 backgroundColor: colour,
@@ -125,6 +138,7 @@ export default function ChessComponent() {
         <>
             <h1> My TUrn : {turn}</h1>
             <h2>Chess</h2>
+            <h3>check {check ? 'Yes' : 'No'}</h3>
             <h2>
                 Turn :
                 {turn == 'w' ? (
