@@ -6,10 +6,10 @@ import { Chess } from 'chess.js'
 
 export default function ChessComponent() {
     const [game, setGame] = useState(new Chess())
-    const [validMoves, setValidMoves] = useState([])
-    const [selectedPiece, setSelectedPiece] = useState('')
+    // const [validMoves, setValidMoves] = useState([])
+    // const [selectedPiece, setSelectedPiece] = useState('')
     const [moveFrom, setMoveFrom] = useState('')
-    const [moveTo, setMoveTo] = useState('')
+    // const [moveTo, setMoveTo] = useState('')
     const [turn, setTurn] = useState('')
     const [rightClickedSquares, setRightClickedSquares] = useState({})
 
@@ -31,21 +31,27 @@ export default function ChessComponent() {
                 to: target,
                 promotion: 'q',
             })
-            // setTurn(game.turn())
+            setMoveFrom('')
+            setRightClickedSquares({})
             if (move === null) return
-        } catch (error) {}
+        } catch (error) {
+            // setRightClickedSquares({})
+            setGame(newGame)
+        }
         if (newGame.isCheck()) {
+            alert('check')
         }
         setGame(newGame)
-        setMoveFrom('')
     }
 
     function pieceClick(piece, square) {
         const colour = 'rgba(0, 0, 255, 0.4)'
 
+    
+
         setMoveFrom(square)
         setRightClickedSquares({
-            ...rightClickedSquares,
+            rightClickedSquares,
             [square]:
                 rightClickedSquares[square] &&
                 rightClickedSquares[square].backgroundColor === colour
@@ -54,36 +60,36 @@ export default function ChessComponent() {
                           backgroundColor: colour,
                       },
         })
-        console.log(game.moves({ square }))
 
         const valid = game.moves({ square })
-        valid.forEach(element => {
-            onSquareRightClick(element)
-            // console.log(element)
 
-            // setRightClickedSquares({
-            //     ...rightClickedSquares,
-            //     [element]:
-            //         rightClickedSquares[element] &&
-            //         rightClickedSquares[element].backgroundColor === colour
-            //             ? undefined
-            //             : {
-            //                   backgroundColor: colour,
-            //               },
-            // })
+        let newSquareColor = {}
+
+        valid.forEach(element => {
+            newSquareColor[element] = {
+                backgroundColor: colour,
+            }
         })
 
-        setValidMoves(game.moves({ square }))
-        console.log(selectedPiece)
+        newSquareColor[square] = {
+            backgroundColor: colour,
+        }
+
+        setRightClickedSquares({
+            // ...rightClickedSquares,
+            ...newSquareColor,
+        })
+        // setValidMoves(game.moves({ square }))
     }
 
-    function onSquareClick(square, piece) {
-        setMoveTo(square)
+    function onSquareClick(square) {
+        // setMoveTo(square)
+
         if (moveFrom) {
-            console.log(validMoves)
-            console.log(square)
-            console.log(piece)
             makeAMove(moveFrom, square)
+            // console.log(validMoves)
+            // console.log(square)
+            // console.log(piece)
         }
     }
 
@@ -99,7 +105,7 @@ export default function ChessComponent() {
                           backgroundColor: colour,
                       },
         })
-        console.log(rightClickedSquares)
+        // console.log(rightClickedSquares)
     }
     useEffect(() => {
         setTurn(game.turn())
