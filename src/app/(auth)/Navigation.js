@@ -65,14 +65,14 @@ export default function Navigation() {
                             </li>
                             <li>
                                 <Link
-                                    href="banner"
+                                    href="/banner"
                                     className={`block py-2 px-3 rounded md:bg-transparent  md:p-0 dark:text-white  first-letter ${path == '/banner' ? 'md:dark:text-blue-500 text-white bg-blue-700 md:text-blue-700' : ''}`}>
                                     Banner
                                 </Link>
                             </li>
                             <li>
                                 <Link
-                                    href="chess"
+                                    href="/chess"
                                     className={`block py-2 px-3 rounded md:bg-transparent  md:p-0 dark:text-white  first-letter ${path == '/chess' ? 'md:dark:text-blue-500 text-white bg-blue-700 md:text-blue-700' : ''}`}>
                                     Chess
                                 </Link>

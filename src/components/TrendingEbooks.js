@@ -9,20 +9,19 @@ import PdfImage from './PdfImage'
 import { FreeMode, Navigation } from 'swiper/modules'
 import 'swiper/css/pagination'
 import 'swiper/css/navigation'
+import Link from 'next/link'
 
 export default function TrendingEbooks() {
     const [ebook, setEbook] = useState([])
     const [loading, setLoading] = useState(true)
 
     function getBooks() {
-        axios
-            .get('/api/v1/ebook/trending-ebook')
-            .then(response => {
-                // console.log(response)
+        axios.get('/api/v1/ebook/trending-ebook').then(response => {
+            // console.log(response)
 
-                setEbook(response.data.ebooks)
-                setLoading(false)
-            })
+            setEbook(response.data.ebooks)
+            setLoading(false)
+        })
     }
 
     useEffect(() => {
@@ -78,7 +77,9 @@ export default function TrendingEbooks() {
                         {ebook.map((ele, index) => (
                             <SwiperSlide key={index}>
                                 <div>
-                                    <PdfImage image={ele.pdf_front} />
+                                    <Link href={`/banner/${ele.id}`}>
+                                        <PdfImage image={ele.pdf_front} />
+                                    </Link>
                                 </div>
                             </SwiperSlide>
                         ))}
