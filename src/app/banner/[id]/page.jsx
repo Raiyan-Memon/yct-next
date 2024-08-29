@@ -1,5 +1,6 @@
 'use client'
 
+import RelatedEbook from '@/components/RelatedEbook'
 import axios from '@/lib/axios'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
@@ -17,6 +18,7 @@ export default function BannerDetails({ params }) {
                 ebook_id: params.id,
             })
             .then(response => {
+                console.log(response.data.data)
                 setBanner(response.data.data)
                 setLoading(false)
             })
@@ -35,6 +37,7 @@ export default function BannerDetails({ params }) {
                     <div>
                         <h3>Title : {banner.title}</h3>
                         <h3>Description : {banner.description}</h3>
+                        <h3>Category : {banner.category_id}</h3>
                         <Image
                             alt="loading"
                             width={200}
@@ -43,6 +46,7 @@ export default function BannerDetails({ params }) {
                         />
                     </div>
                 )}
+                <RelatedEbook categoryId={banner.category_id} />
             </div>
         </>
     )
