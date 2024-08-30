@@ -2,6 +2,7 @@ import { Nunito } from 'next/font/google'
 import '@/app/global.css'
 import Navigation from './(auth)/Navigation'
 import NextTopLoader from 'nextjs-toploader'
+import { Toaster } from 'react-hot-toast'
 
 const nunitoFont = Nunito({
     subsets: ['latin'],
@@ -13,6 +14,7 @@ const RootLayout = ({ children }) => {
         <html lang="en" className={nunitoFont.className}>
             <body className="antialiased">
                 <Navigation />
+                <Toaster />
                 <NextTopLoader
                     color="#2299DD"
                     initialPosition={0.08}

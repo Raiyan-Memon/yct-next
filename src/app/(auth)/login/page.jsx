@@ -46,6 +46,10 @@ const Login = () => {
 
     return (
         <>
+            <button className="bg-slate-800 text-white p-2 rounded-md hover:bg-slate-500 transition ">
+                Login With Google
+            </button>
+
             <AuthSessionStatus className="mb-4" status={status} />
             <form onSubmit={submitForm}>
                 {/* Email Address */}
@@ -79,10 +83,7 @@ const Login = () => {
                         autoComplete="current-password"
                     />
 
-                    <InputError
-                        messages={errors.password}
-                        className="mt-2"
-                    />
+                    <InputError messages={errors.password} className="mt-2" />
                 </div>
 
                 {/* Remember Me */}
